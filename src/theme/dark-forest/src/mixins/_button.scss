@@ -1,0 +1,82 @@
+@import "../common/var";
+
+@mixin button-variant-fill($color, $background-color, $border-color) {
+  color: $color;
+  background-color: $background-color;
+  border-color: $border-color;
+
+  &:hover,
+  &:focus {
+    background: lighten($background-color, $--button-hover-tint-percent);
+    border-color: lighten($border-color, $--button-hover-tint-percent);
+    color: $color;
+  }
+
+  &:active {
+    background: darken($background-color, $--button-active-shade-percent);
+    border-color: darken($border-color, $--button-active-shade-percent);
+    color: $color;
+    outline: none;
+  }
+
+  &.is-disabled {
+    &,
+    &:hover,
+    &:focus,
+    &:active {
+      color: $--color-white;
+      background-color: $--color-disabled;
+      border-color: $--color-disabled;
+    }
+  }
+}
+
+@mixin button-variant-stroke($color, $background-color, $border-color) {
+  color: $color;
+  background-color: $background-color;
+  border-color: $border-color;
+
+  &:hover,
+  &:focus {
+    background: lighten($background-color, $--button-hover-tint-percent);
+    border-color: lighten($border-color, $--button-hover-tint-percent);
+    color: $color;
+  }
+
+  &:active {
+    background: darken($background-color, $--button-active-shade-percent);
+    border-color: darken($border-color, $--button-active-shade-percent);
+    color: $color;
+    outline: none;
+  }
+
+  &.is-disabled {
+    &,
+    &:hover,
+    &:focus {
+      color: $--button-stroke-disabled-color;
+      cursor: not-allowed;
+      background-image: none;
+      background-color: $--button-stroke-disabled-fill;
+      border-color: $--button-stroke-disabled-border;
+      border-style: dashed;
+    }
+    &.neo-button--text {
+      background-color: transparent;
+    }
+  }
+}
+
+@mixin button-size(
+  $padding-vertical,
+  $padding-horizontal,
+  $font-size,
+  $border-radius
+) {
+  padding: $padding-vertical $padding-horizontal;
+  font-size: $font-size;
+  border-radius: $border-radius;
+  &.is-round {
+    padding: $padding-vertical $padding-horizontal;
+  }
+}

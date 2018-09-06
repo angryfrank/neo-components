@@ -1,0 +1,477 @@
+@import "mixins/mixins";
+@import "common/var";
+
+@include b(tabs) {
+  @include e(header) {
+    padding: 0;
+    position: relative;
+  }
+  @include e(active-bar) {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    background-color: $--color-primary;
+    z-index: 1;
+    transition: transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+    list-style: none;
+  }
+  @include e(new-tab) {
+    float: right;
+    border: 1px solid #d3dce6;
+    height: 18px;
+    width: 18px;
+    line-height: 18px;
+    margin: 12px 0 9px 10px;
+    border-radius: 3px;
+    text-align: center;
+    font-size: 12px;
+    color: #d3dce6;
+    cursor: pointer;
+    transition: all 0.15s;
+
+    .neo-icon {
+      transform: scale(0.8, 0.8);
+    }
+
+    &:hover {
+      color: $--color-primary;
+    }
+  }
+  @include e(nav-wrap) {
+    overflow: hidden;
+    margin-bottom: -1px;
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 2px;
+      background-color: $--color-dividing-line;
+      z-index: $--index-normal;
+    }
+
+    @include when(scrollable) {
+      padding: 0 20px;
+      box-sizing: border-box;
+    }
+  }
+  @include e(nav-scroll) {
+    overflow: hidden;
+  }
+  @include e((nav-next, nav-prev)) {
+    position: absolute;
+    cursor: pointer;
+    line-height: 44px;
+    font-size: 12px;
+    color: $--color-text-primary;
+  }
+  @include e(nav-next) {
+    right: 0;
+  }
+  @include e(nav-prev) {
+    left: 0;
+  }
+  @include e(nav) {
+    white-space: nowrap;
+    position: relative;
+    transition: transform 0.3s;
+    float: left;
+    z-index: #{$--index-normal + 1};
+
+    @include when(stretch) {
+      min-width: 100%;
+      display: flex;
+      & > * {
+        flex: 1;
+        text-align: center;
+      }
+    }
+  }
+  @include e(item) {
+    padding: 0 28px;
+    height: 50px;
+    box-sizing: border-box;
+    line-height: 50px;
+    display: inline-block;
+    list-style: none;
+    font-size: 16px;
+    color: $--color-text-primary;
+    position: relative;
+
+    &:focus,
+    &:focus:active {
+      outline: none;
+    }
+
+    &:focus.is-active.is-focus:not(:active) {
+      box-shadow: 0 0 2px 2px #409eff inset;
+      border-radius: 3px;
+    }
+
+    & .neo-icon-close {
+      font-size: 14px;
+      border-radius: 2px;
+      text-align: center;
+      transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+      &:before {
+        transform: scale(0.9);
+        display: inline-block;
+      }
+
+      &:hover {
+        background-color: $--color-primary;
+        color: $--color-white;
+      }
+    }
+
+    @include when(active) {
+      color: $--color-primary;
+    }
+
+    &:hover {
+      color: $--color-primary;
+      cursor: pointer;
+    }
+
+    @include when(disabled) {
+      color: $--color-text-disabled;
+      cursor: default;
+    }
+  }
+  @include e(content) {
+    overflow: hidden;
+    position: relative;
+  }
+  @include m(card) {
+    > .neo-tabs__header {
+      border-bottom: 1px solid $--tabs-dividing-line;
+    }
+    > .neo-tabs__header .neo-tabs__nav-wrap::after {
+      content: none;
+    }
+    > .neo-tabs__header .neo-tabs__active-bar {
+      display: none;
+    }
+    > .neo-tabs__header .neo-tabs__item .neo-icon-close {
+      position: relative;
+      font-size: 12px;
+      width: 0;
+      height: 14px;
+      vertical-align: middle;
+      line-height: 15px;
+      overflow: hidden;
+      top: -1px;
+      right: -2px;
+      transform-origin: 100% 50%;
+    }
+    > .neo-tabs__header .neo-tabs__item {
+      border: 1px solid $--tabs-dividing-line;
+      border-right: none;
+      background-color: $--color-background-small-area;
+      transition: color 0.3s cubic-bezier(0.645, 0.045, 0.355, 1),
+        padding 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+      &:last-child {
+        border-right: 1px solid $--tabs-dividing-line;
+      }
+      &.is-closable {
+        &:hover {
+          padding-left: 28px;
+          padding-right: 28px;
+
+          & .neo-icon-close {
+            width: 14px;
+            padding: 3px;
+          }
+        }
+      }
+      &.is-active {
+        border-bottom-color: $--color-white;
+        background-color: $--color-white;
+        border-top: 2px solid $--color-primary;
+        top: 1px;
+        &.is-closable {
+          padding-left: 28px;
+          padding-right: 28px;
+
+          .neo-icon-close {
+            width: 14px;
+            margin-left: 8px;
+            padding: 3px;
+          }
+        }
+      }
+    }
+  }
+  @include m((left, right)) {
+    overflow: hidden;
+
+    .neo-tabs__header.is-left,
+    .neo-tabs__header.is-right,
+    .neo-tabs__nav-wrap.is-left,
+    .neo-tabs__nav-wrap.is-right,
+    .neo-tabs__nav-scroll {
+      height: 100%;
+    }
+
+    .neo-tabs__active-bar.is-left,
+    .neo-tabs__active-bar.is-right {
+      top: 0;
+      bottom: auto;
+      width: 2px;
+      height: auto;
+    }
+
+    .neo-tabs__nav-wrap.is-left,
+    .neo-tabs__nav-wrap.is-right {
+      margin-bottom: 0;
+
+      &.is-scrollable {
+        padding: 30px 0;
+      }
+
+      &::after {
+        height: 100%;
+        width: 2px;
+        bottom: auto;
+        top: 0;
+      }
+    }
+
+    .neo-tabs__nav {
+      float: none;
+    }
+    .neo-tabs__item.is-left,
+    .neo-tabs__item.is-right {
+      display: block;
+    }
+
+    .neo-tabs__nav-prev,
+    .neo-tabs__nav-next {
+      height: 30px;
+      line-height: 30px;
+      width: 100%;
+      text-align: center;
+      cursor: pointer;
+
+      i {
+        transform: rotateZ(90deg);
+      }
+    }
+    .neo-tabs__nav-prev {
+      left: auto;
+      top: 0;
+    }
+    .neo-tabs__nav-next {
+      right: auto;
+      bottom: 0;
+    }
+  }
+  @include m(left) {
+    .neo-tabs__header.is-left {
+      float: left;
+      margin-bottom: 0;
+      margin-right: 10px;
+    }
+    .neo-tabs__nav-wrap.is-left {
+      margin-right: -1px;
+      &::after {
+        left: auto;
+        right: 0;
+      }
+    }
+    .neo-tabs__active-bar.is-left {
+      right: 0;
+      left: auto;
+    }
+    .neo-tabs__item.is-left {
+      text-align: right;
+    }
+
+    &.neo-tabs--card {
+      .neo-tabs__active-bar.is-left {
+        display: none;
+      }
+      .neo-tabs__item.is-left {
+        border-left: none;
+        border-right: 1px solid $--color-dividing-line;
+        border-bottom: none;
+        border-top: 1px solid $--color-dividing-line;
+      }
+      .neo-tabs__item.is-left:first-child {
+        border-right: 1px solid $--color-dividing-line;
+        border-top: none;
+      }
+      .neo-tabs__item.is-left.is-active {
+        border: 1px solid $--color-dividing-line;
+        border-right-color: #fff;
+        border-left: none;
+        border-bottom: none;
+
+        &:first-child {
+          border-top: none;
+        }
+        &:last-child {
+          border-bottom: none;
+        }
+      }
+
+      .neo-tabs__nav {
+        border-radius: 4px 0 0 4px;
+        border-bottom: 1px solid $--color-dividing-line;
+        border-right: none;
+      }
+
+      .neo-tabs__new-tab {
+        float: none;
+      }
+    }
+  }
+  @include m(right) {
+    .neo-tabs__header.is-right {
+      float: right;
+      margin-bottom: 0;
+      margin-left: 10px;
+    }
+
+    .neo-tabs__nav-wrap.is-right {
+      margin-left: -1px;
+      &::after {
+        left: 0;
+        right: auto;
+      }
+    }
+
+    .neo-tabs__active-bar.is-right {
+      left: 0;
+    }
+
+    &.neo-tabs--card {
+      .neo-tabs__active-bar.is-right {
+        display: none;
+      }
+      .neo-tabs__item.is-right {
+        border-bottom: none;
+        border-top: 1px solid $--color-dividing-line;
+      }
+      .neo-tabs__item.is-right:first-child {
+        border-left: 1px solid $--color-dividing-line;
+        border-top: none;
+      }
+      .neo-tabs__item.is-right.is-active {
+        border: 1px solid $--color-dividing-line;
+        border-left-color: #fff;
+        border-right: none;
+        border-bottom: none;
+
+        &:first-child {
+          border-top: none;
+        }
+        &:last-child {
+          border-bottom: none;
+        }
+      }
+
+      .neo-tabs__nav {
+        border-radius: 0 4px 4px 0;
+        border-bottom: 1px solid $--color-dividing-line;
+        border-left: none;
+      }
+    }
+  }
+}
+
+.slideInRight-transition,
+.slideInLeft-transition {
+  display: inline-block;
+}
+.slideInRight-enter {
+  animation: slideInRight-enter 0.3s;
+}
+.slideInRight-leave {
+  position: absolute;
+  left: 0;
+  right: 0;
+  animation: slideInRight-leave 0.3s;
+}
+.slideInLeft-enter {
+  animation: slideInLeft-enter 0.3s;
+}
+.slideInLeft-leave {
+  position: absolute;
+  left: 0;
+  right: 0;
+  animation: slideInLeft-leave 0.3s;
+}
+
+@keyframes slideInRight-enter {
+  0% {
+    opacity: 0;
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+    -webkit-transform: translateX(100%);
+    transform: translateX(100%);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+}
+@keyframes slideInRight-leave {
+  0% {
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  100% {
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+    -webkit-transform: translateX(100%);
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+@keyframes slideInLeft-enter {
+  0% {
+    opacity: 0;
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+    -webkit-transform: translateX(-100%);
+    transform: translateX(-100%);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+}
+@keyframes slideInLeft-leave {
+  0% {
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  100% {
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+    -webkit-transform: translateX(-100%);
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+}

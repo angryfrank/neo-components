@@ -1,0 +1,12 @@
+{
+  "button": "./src/components/button/index.js",
+  "breadcrumb": "./src/components/breadcrumb/index.js",
+  "breadcrumb-item": "./src/components/breadcrumb-item/index.js",
+  "tabs": "./src/components/tabs/index.js",
+  "tab-pane": "./src/components/tab-pane/index.js",
+  "step": "./src/components/step/index.js",
+  "steps": "./src/components/steps/index.js",
+  "dividing-line": "./src/components/dividing-line/index.js",
+  "timeline": "./src/components/timeline/index.js",
+  "timeline-item": "./src/components/timeline-item/index.js"
+}

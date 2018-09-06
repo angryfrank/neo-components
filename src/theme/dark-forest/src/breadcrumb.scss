@@ -1,0 +1,47 @@
+@import "mixins/mixins";
+@import "mixins/utils";
+@import "common/var";
+
+@include b(breadcrumb) {
+  font-size: 14px;
+  line-height: 1;
+  @include utils-clearfix;
+
+  @include e(separator) {
+    margin: 0 5px;
+    color: $--breadcrumb-separator-color;
+  }
+
+  @include e(item) {
+    float: left;
+
+    @include e(inner) {
+      color: $--breadcrumb-color;
+
+      &.is-link, & a {
+        text-decoration: none;
+        transition: $--color-transition-base;
+        color: $--breadcrumb-link-color;
+
+        &:hover {
+          color: $--color-primary;
+          cursor: pointer;
+        }
+      }
+    }
+
+    &:last-child {
+      .neo-breadcrumb__inner,
+      .neo-breadcrumb__inner a {
+        &, &:hover {
+          color: $--breadcrumb-color;
+          cursor: text;
+        }
+      }
+
+      .neo-breadcrumb__separator {
+        display: none;
+      }
+    }
+  }
+}

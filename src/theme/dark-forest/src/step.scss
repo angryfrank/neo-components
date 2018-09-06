@@ -1,0 +1,136 @@
+@import "mixins/mixins";
+@import "common/var";
+
+@include b(step) {
+  position: relative;
+  flex-shrink: 1;
+
+  @include pseudo(last-of-type) {
+    @include e(line) {
+      display: none;
+    }
+
+    @include e(main) {
+      padding-right: 0;
+    }
+  }
+
+  @include e(head) {
+    position: relative;
+    width: 100%;
+    text-align: center;
+    // 当前节点
+    @include when(process) {
+      color: $--color-white;
+      border-color: $--color-primary;
+    }
+    //未来节点
+    @include when(wait) {
+      color: $--color-disabled;
+      border-color: $--color-disabled;
+    }
+    //过去节点
+    @include when(finish) {
+      color: $--color-primary;
+      border-color: $--color-primary;
+    }
+    //完成节点（流程结束）
+    @include when(success) {
+      color: $--color-success;
+      border-color: $--color-success;
+    }
+  }
+
+  @include e(line) {
+    position: absolute;
+    border-color: inherit;
+    background-color: $--color-disabled;
+    left: 50%;
+    right: -50%;
+  }
+
+  @include e(line-inner) {
+    display: block;
+    border-width: 1px;
+    border-style: solid;
+    border-color: inherit;
+    transition: 0.15s ease-out;
+    box-sizing: border-box;
+    width: 0;
+    height: 0;
+  }
+
+  @include e(main) {
+    white-space: normal;
+    text-align: center;
+  }
+
+  @include e(title) {
+    font-size: 14px;
+    margin-top: 13px;
+
+    @include when(process) {
+      color: $--color-primary;
+    }
+
+    @include when(wait) {
+      color: $--color-disabled;
+    }
+
+    @include when(success) {
+      color: $--color-primary;
+    }
+
+    @include when(finish) {
+      color: $--color-primary;
+    }
+  }
+
+  @include e(icon) {
+    position: relative;
+    z-index: 1;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 38px;
+    height: 38px;
+    font-size: 22px;
+    box-sizing: border-box;
+    transition: 0.15s ease-out;
+    color:$--color-disabled;
+    background-color: $--color-white;
+    
+    @include when(text) {
+      border-radius: 50%;
+      border: 2px solid;
+      border-color: inherit;
+    }
+    
+    @include when(unwait) {
+      color:$--color-white;
+      background-color: $--color-primary;
+    }
+  }
+
+  @include e(icon-inner) {
+    display: inline-block;
+    user-select: none;
+    text-align: center;
+    line-height: 1;
+    color: inherit;
+
+    &[class*="el-icon"]:not(.is-status) {
+      font-size: 22px;
+      font-weight: normal;
+    }
+  }
+
+  @include when(horizontal) {
+    display: inline-block;
+
+    @include e(line) {
+      height: 2px;
+      top: 18px;
+    }
+  }
+}

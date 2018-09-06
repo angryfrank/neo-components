@@ -1,0 +1,68 @@
+@charset "UTF-8";
+@import "common/var";
+@import "mixins/button";
+@import "mixins/mixins";
+@import "mixins/utils";
+@include b(timeline) {
+  @include e(item) {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    font-size: 14px;
+
+    @include when(current) {
+      color: $--color-primary;
+    }
+
+    @include when(prev) {
+      color: $--color-text-base;
+    }
+  }
+  @include e(timestamp) {
+    display: inline-block;
+    color: inherit;
+  }
+  @include e(line) {
+    $type: "is-prev";
+    display: inline-block;
+    width: 2px;
+    margin: 0 25px;
+    position: relative;
+    top: 10px;
+    @include when(current) {
+      background-color: transparent;
+      &:before {
+        content: "";
+        display: inline-block;
+        height: 10px;
+        width: 10px;
+        border-radius: 50%;
+        background-color: $--color-primary;
+        position: relative;
+        left: -4px;
+        top: -10px;
+      }
+    }
+    @include when(prev) {
+      background-color: $--color-dividing-line;
+      &:before {
+        content: "";
+        display: inline-block;
+        height: 10px;
+        width: 10px;
+        border-radius: 50%;
+        background-color: inherit;
+        position: relative;
+        left: -4px;
+        top: -10px;
+      }
+    }
+  }
+  @include e(content) {
+    display: inline-block;
+    flex: 1;
+    max-width: 680px;
+    margin: 0;
+    padding-bottom: 40px;
+  }
+}

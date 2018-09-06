@@ -1,0 +1,97 @@
+@charset "UTF-8";
+@import "common/var";
+@import "mixins/button";
+@import "mixins/mixins";
+@import "mixins/utils";
+@include b(button) {
+    display: inline-block;
+    line-height: 1;
+    white-space: nowrap;
+    cursor: pointer;
+    background: $--button-default-fill;
+    border: $--border-base;
+    color: $--button-default-color;
+    -webkit-appearance: none;
+    text-align: center;
+    box-sizing: border-box;
+    outline: none;
+    margin: 0;
+    transition: .1s;
+    min-width: 100px;
+    @include utils-user-select(none);
+    @include button-size($--button-padding-vertical, $--button-padding-horizontal, $--button-font-size, $--button-border-radius);
+    &:hover,
+    &:focus,
+    &:active {
+        color: lighten($--button-default-border, $--button-hover-tint-percent);
+        border-color: lighten($--button-default-border, $--button-hover-tint-percent);
+        background-color: $--button-default-fill;
+    }
+    &::-moz-focus-inner {
+        border: 0;
+    }
+    & [class*="neo-icon"] {
+        &+span {
+            margin-left: 5px;
+        }
+    }
+    @include when(disabled) {
+        &,
+        &:hover,
+        &:focus {
+            color: $--button-stroke-disabled-color;
+            cursor: not-allowed;
+            background-image: none;
+            background-color: $--button-stroke-disabled-fill;
+            border-color: $--button-stroke-disabled-border;
+            border-style: dashed;
+        }
+        &.neo-button--text {
+            background-color: transparent;
+        }
+    }
+    @include m(stroke) {
+        @include button-variant-stroke($--button-stroke-color, $--button-stroke-fill, $--button-stroke-border);
+    }
+    @include m(primary) {
+        @include button-variant-fill($--button-primary-color, $--button-primary-fill, $--button-primary-border);
+    }
+    @include m(success) {
+        @include button-variant-fill($--button-success-color, $--button-success-fill, $--button-success-border);
+    }
+    @include m(warning) {
+        @include button-variant-fill($--button-warning-color, $--button-warning-fill, $--button-warning-border);
+    }
+    @include m(danger) {
+        @include button-variant-fill($--button-danger-color, $--button-danger-fill, $--button-danger-border);
+    }
+    @include m(large) {
+        @include button-size($--button-large-padding-vertical, $--button-large-padding-horizontal, $--button-large-font-size, $--button-large-border-radius);
+    }
+    @include m(small) {
+        @include button-size($--button-small-padding-vertical, $--button-small-padding-horizontal, $--button-small-font-size, $--button-small-border-radius);
+    }
+    @include m(text) {
+        border-color: transparent;
+        color: $--color-primary;
+        background: transparent;
+        padding-left: 0;
+        padding-right: 0;
+        &:hover,
+        &:focus {
+            color: lighten($--color-primary, $--button-hover-tint-percent);
+            border-color: transparent;
+            background-color: transparent;
+        }
+        &:active {
+            color: darken($--color-primary, $--button-active-shade-percent);
+            border-color: transparent;
+            background-color: transparent;
+        }
+        &.is-disabled,
+        &.is-disabled:hover,
+        &.is-disabled:focus {
+            border-color: transparent;
+        }
+    }
+}

@@ -1,0 +1,8 @@
+@charset "UTF-8";
+@import "common/var";
+@import "mixins/button";
+@import "mixins/mixins";
+@import "mixins/utils";
+@include b(dividing-line) {
+    margin: 20px 0;
+}
