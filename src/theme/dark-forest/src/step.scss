@@ -86,6 +86,12 @@
     }
   }
 
+  @include e(description) {
+    font-size: 12px;
+    margin-top: 10px;
+    color: $--color-text-base;
+  }
+
   @include e(icon) {
     position: relative;
     z-index: 1;
@@ -97,17 +103,17 @@
     font-size: 22px;
     box-sizing: border-box;
     transition: 0.15s ease-out;
-    color:$--color-disabled;
+    color: $--color-disabled;
     background-color: $--color-white;
-    
+
     @include when(text) {
       border-radius: 50%;
       border: 2px solid;
       border-color: inherit;
     }
-    
+
     @include when(unwait) {
-      color:$--color-white;
+      color: $--color-white;
       background-color: $--color-primary;
     }
   }

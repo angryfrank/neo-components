@@ -16,6 +16,9 @@
       <div class="neo-step__title" ref="title" :class="['is-' + currentStatus]">
         <slot name="title">{{ title }}</slot>
       </div>
+      <div class="neo-step__description" ref="description">
+        <slot name="description">{{ description }}</slot>
+      </div>
     </div>
   </div>
 </template>
@@ -26,7 +29,8 @@
 
     props: {
       title: String,
-      status: String
+      description:String,
+      status: String,
     },
 
     data() {

@@ -1,0 +1,11 @@
+@charset "UTF-8";
+@import "common/var";
+@import "mixins/button";
+@import "mixins/mixins";
+@import "mixins/utils";
+
+@include b(checkbox-tag-group) {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}

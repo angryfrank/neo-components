@@ -11,6 +11,8 @@ import Steps from './components/steps/index.js'
 import DividingLine from './components/dividing-line/index.js'
 import Timeline from './components/timeline/index.js'
 import TimelineItem from './components/timeline-item/index.js'
+import CheckboxTag from './components/checkbox-tag/index.js'
+import CheckboxTagGroup from './components/checkbox-tag-group/index.js'
 
 const components = [
 	Button,
@@ -22,7 +24,9 @@ const components = [
 	Steps,
 	DividingLine,
 	Timeline,
-	TimelineItem
+	TimelineItem,
+	CheckboxTag,
+	CheckboxTagGroup
 ];
 
 const install = function(Vue, opts = {}) {
@@ -37,7 +41,7 @@ if(typeof window !== 'undefined' && window.Vue) {
 }
 
 export default {
-	version: '1.0.1',
+	version: '1.0.2',
 	install,
 	Button,
 	Breadcrumb,
@@ -48,5 +52,7 @@ export default {
 	Steps,
 	DividingLine,
 	Timeline,
-	TimelineItem
+	TimelineItem,
+	CheckboxTag,
+	CheckboxTagGroup
 };
