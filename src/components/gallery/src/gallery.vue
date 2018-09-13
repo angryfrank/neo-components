@@ -60,7 +60,14 @@
             selectContainerMouseMove,
             maskMouseOver,
             maskMouseOut,
-        }
+        },
+        watch: {
+            homeBanner: function (newValue, oldValue) {
+                if (newValue && this.homeBanner.length > 0) {
+                    this.imgSrcUrl = this.homeBanner[0];
+                }
+            }
+        },
     }
 
     function imgClick(item) {
