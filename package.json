@@ -1,6 +1,6 @@
 {
   "name": "neo-components",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "neo项目公共样式库",
   "author": "guanlong.xu <guanlong.xu@xinguang.com>",
   "main": "lib/index.js",
