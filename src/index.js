@@ -13,6 +13,7 @@ import Timeline from './components/timeline/index.js'
 import TimelineItem from './components/timeline-item/index.js'
 import CheckboxTag from './components/checkbox-tag/index.js'
 import CheckboxTagGroup from './components/checkbox-tag-group/index.js'
+import Gallery from './components/gallery/index.js'
 
 const components = [
 	Button,
@@ -26,7 +27,8 @@ const components = [
 	Timeline,
 	TimelineItem,
 	CheckboxTag,
-	CheckboxTagGroup
+	CheckboxTagGroup,
+	Gallery
 ];
 
 const install = function(Vue, opts = {}) {
@@ -41,7 +43,7 @@ if(typeof window !== 'undefined' && window.Vue) {
 }
 
 export default {
-	version: '1.0.3',
+	version: '1.0.4',
 	install,
 	Button,
 	Breadcrumb,
@@ -54,5 +56,6 @@ export default {
 	Timeline,
 	TimelineItem,
 	CheckboxTag,
-	CheckboxTagGroup
+	CheckboxTagGroup,
+	Gallery
 };

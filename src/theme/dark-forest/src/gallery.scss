@@ -1,0 +1,90 @@
+@charset "UTF-8";
+@import "common/var";
+@import "mixins/button";
+@import "mixins/mixins";
+@import "mixins/utils";
+
+@include b(gallery) {
+  $width: 264px;
+  width: $width;
+  position: relative;
+
+  @include e(booth) {
+    background-color: #8c939d;
+    position: relative;
+    width: $width;
+    height: $width;
+
+    .select-img {
+      width: $width;
+      height: $width;
+    }
+
+    .mask {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: $width/2;
+      height: $width/2;
+      background: rgba(62, 55, 58, 0.4);
+      display: none;
+    }
+
+    .big-box {
+      width: $width;
+      height: $width;
+      position: absolute;
+      left: $width + 10;
+      top: 0;
+      overflow: hidden;
+      border: 1px solid black;
+      display: none;
+
+      .big-img {
+        width: $width * 2;
+        height: $width * 2;
+        position: absolute;
+      }
+    }
+  }
+
+  @include e(thumb) {
+    width: $width;
+    height: 76px;
+
+    .img {
+      width: 45px;
+      height: 45px;
+      cursor: pointer;
+      padding-left: 5px;
+    }
+
+    .swiper {
+      margin-top: 26px;
+      width: 200px;
+      height: 50px;
+    }
+
+    .swiper-button-prev{
+      width: 26px;
+      height: 30px;
+      left: 0;
+      top: 88%;
+      background-image: none;
+      font-size: 28px;
+      color: $--color-dividing-line;
+      outline: none;
+    }
+
+    .swiper-button-next{
+      width: 26px;
+      height: 30px;
+      right: 0;
+      top: 88%;
+      background-image: none;
+      font-size: 28px;
+      color: $--color-dividing-line;
+      outline: none;
+    }
+  }
+}

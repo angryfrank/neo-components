@@ -10,5 +10,6 @@
   "timeline": "./src/components/timeline/index.js",
   "timeline-item": "./src/components/timeline-item/index.js",
   "checkbox-tag": "./src/components/checkbox-tag/index.js",
-  "checkbox-tag-group": "./src/components/checkbox-tag-group/index.js"
+  "checkbox-tag-group": "./src/components/checkbox-tag-group/index.js",
+  "gallery": "./src/components/gallery/index.js"
 }
