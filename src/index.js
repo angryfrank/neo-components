@@ -14,6 +14,9 @@ import TimelineItem from './components/timeline-item/index.js'
 import CheckboxTag from './components/checkbox-tag/index.js'
 import CheckboxTagGroup from './components/checkbox-tag-group/index.js'
 import Gallery from './components/gallery/index.js'
+import Input from './components/input/index.js'
+import InputNumber from './components/input-number/index.js'
+import LinkageSelectbox from './components/linkage-selectbox/index.js'
 
 const components = [
 	Button,
@@ -28,7 +31,10 @@ const components = [
 	TimelineItem,
 	CheckboxTag,
 	CheckboxTagGroup,
-	Gallery
+	Gallery,
+	Input,
+	InputNumber,
+	LinkageSelectbox
 ];
 
 const install = function(Vue, opts = {}) {
@@ -43,7 +49,7 @@ if(typeof window !== 'undefined' && window.Vue) {
 }
 
 export default {
-	version: '1.0.6',
+	version: '1.0.9',
 	install,
 	Button,
 	Breadcrumb,
@@ -57,5 +63,8 @@ export default {
 	TimelineItem,
 	CheckboxTag,
 	CheckboxTagGroup,
-	Gallery
+	Gallery,
+	Input,
+	InputNumber,
+	LinkageSelectbox
 };

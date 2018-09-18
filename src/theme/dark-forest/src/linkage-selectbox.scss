@@ -1,0 +1,129 @@
+@import "mixins/mixins";
+@import "common/var";
+
+@include b(linkage-selectbox) {
+  font-size: 14px;
+
+  @include e(item) {
+    display: flex;
+  }
+
+  @include e(item-label) {
+    width: 120px;
+    color: #666;
+  }
+
+  @include e(item-value) {
+    flex: 1;
+    color: $--linkage-selectbox-color;
+
+    .type-1 {
+      display: flex;
+      flex-direction: row;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      $-lighter-color-1: lighten($--color-primary, 10%);
+      $-lighter-color-2: lighten($--color-primary, 20%);
+
+      .tag-select {
+        display: inline-block;
+        position: relative;
+        font-size: 12px;
+        margin: 0 16px 16px 0;
+        padding: 6px 16px;
+        border: $--border-base;
+        border-color: $--linkage-selectbox-border-color;
+        border-radius: $--border-radius-base;
+        user-select: none;
+        cursor: pointer;
+
+        &:hover {
+          border-color: $-lighter-color-1;
+          color: $-lighter-color-1;
+
+          & [class*="neo-icon"] {
+            color: inherit;
+          }
+        }
+
+        &:active {
+          border-color: $--color-primary;
+          color: $--color-primary;
+        }
+
+        @include when(selected) {
+          border-color: $--color-primary;
+          color: $--color-primary;
+        }
+
+        @include when(ordered) {
+          border-color: $-lighter-color-2;
+          & [class*="neo-icon"] {
+            color: $-lighter-color-2;
+            position: absolute;
+            right: 0px;
+            bottom: 0px;
+          }
+        }
+      }
+    }
+
+    .type-2 {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      .num-select {
+        margin-bottom: 10px;
+
+        > span {
+          display: inline-block;
+          width: 100px;
+          height: 30px;
+          line-height: 30px;
+          margin-right: 20px;
+
+          &:nth-child(2) {
+            text-align: end;
+          }
+        }
+      }
+    }
+  }
+
+  .show-more {
+    text-align: center;
+    width: 532px;
+    border-top: 2px solid $--color-dividing-line;
+    padding: 8px 0;
+
+    > span {
+      color: $--color-link;
+      cursor: pointer;
+    }
+  }
+
+  .statistics {
+    flex-direction: row;
+    width: 520px;
+    background-color: $--color-background-small-area;
+    padding: 14px 16px;
+    color: $--color-text-primary;
+
+    > span {
+      color: $--color-text-base;
+    }
+
+    p {
+      display: inline-block;
+      margin: 0;
+      padding: 0;
+      float: right;
+
+      > span {
+        color: $--color-primary;
+      }
+    }
+  }
+}

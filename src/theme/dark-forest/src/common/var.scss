@@ -14,7 +14,7 @@ $--color-transition-base: color .2s cubic-bezier(.645,.045,.355,1) !default;
 $--color-white: #fff !default;
 $--color-black: #000 !default;
 
-$--color-primary: #FA7622 !default;//主色
+$--color-primary: #FA7623 !default;//主色
 $--color-link: #005EF7 !default;//链接、操作
 $--color-success: #00A55A !default;//成功、审核通过
 $--color-warning: #FF8208 !default;//警告、进程审核
@@ -132,6 +132,47 @@ $--tabs-dividing-line:#DEDEDE !default;
 /* checkbox
 -------------------------- */
 $--checkbox-unchecked-border-color:#CCCCCC !default;
+
+/* Input
+-------------------------- */
+$--input-font-size: $--font-size-base !default;
+$--input-color: $--color-text-primary !default;
+$--input-width: 238px !default;
+$--input-height: 40px !default;
+$--input-border: 1px solid #B8CADD !default;
+$--input-border-radius: $--border-radius-base !default;
+$--input-border-color-hover: #005EA7 !default;
+$--input-fill: $--color-white !default;
+$--input-fill-disabled: $--color-white !default;
+$--input-color-disabled: $--color-disabled !default;
+$--input-icon-color: $--color-text-auxiliary !default;
+$--input-placeholder-color: $--color-text-auxiliary !default;
+$--input-max-width: 314px !default;
+
+$--input-hover-border: #005EA7 !default;
+$--input-clear-hover-color: $--color-text-auxiliary !default;
+
+$--input-focus-border: #005EA7 !default;
+$--input-focus-fill: $--color-white !default;
+
+$--input-disabled-fill: $--color-white !default;
+$--input-disabled-border: #DDDDDD !default;
+$--input-disabled-color: $--color-disabled !default;
+$--input-disabled-placeholder-color: $--color-disabled !default;
+
+$--input-medium-font-size: 14px !default;
+$--input-medium-height: 36px !default;
+
+$--input-small-font-size: 13px !default;
+$--input-small-height: 32px !default;
+
+$--input-mini-font-size: 12px !default;
+$--input-mini-height: 28px !default;
+
+/* LinkageSelectbox
+-------------------------- */
+$--linkage-selectbox-color:$--color-text-primary !default;
+$--linkage-selectbox-border-color:#CCCCCC !default;
 
 
 
