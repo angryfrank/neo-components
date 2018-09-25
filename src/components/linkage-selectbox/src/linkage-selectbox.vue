@@ -24,7 +24,8 @@
                                 <div class="num-select">
                                     <span>{{subitem.label}}</span>
                                     <span>{{"US$"+subitem.price}}</span>
-                                    <span>{{"可售:"+subitem.stock}}</span>
+                                    <!-- 可售 -->
+                                    <span>{{$t("neo.linkageSelectbox.availableSale")+":"+subitem.stock}}</span>
                                     <neo-input-number v-model="subitem.count" :min="0" :max="subitem.stock" :step="1"
                                         :disabled="subitem.stock <= 0" @change="handleNumSelectChange(subitem.count,subitem.skuNo)"></neo-input-number>
                                 </div>
@@ -34,7 +35,8 @@
                                     <div class="num-select">
                                         <span>{{subitem.label}}</span>
                                         <span>{{"US$"+subitem.price}}</span>
-                                        <span>{{"可售:"+subitem.stock}}</span>
+                                        <!-- 可售 -->
+                                        <span>{{$t("neo.linkageSelectbox.availableSale")+":"+subitem.stock}}</span>
                                         <neo-input-number v-model="subitem.count" :min="0" :max="subitem.stock" :step="1"
                                             :disabled="subitem.stock <= 0" @change="handleNumSelectChange(subitem.count,subitem.skuNo)"></neo-input-number>
                                     </div>
@@ -42,13 +44,14 @@
                             </div>
                         </ul>
                         <div v-if="item.list.length > 3 && !showMore" class="show-more">
-                            <span @click="showMore = true">更多&nbsp;<i class="neo-icon">&#xe709;</i></span>
+                            <span @click="showMore = true">{{$t("neo.linkageSelectbox.viewMore")}}&nbsp;<i class="neo-icon">&#xe709;</i></span>
                         </div>
                         <div class="statistics">
-                            <span>已选</span>
+                                <!-- 已选 -->
+                            <span>{{$t("neo.linkageSelectbox.selected")}}</span>
                             <p>
-                                <span>{{statisticsInfo.totalCount}}</span> 件，
-                                <span>{{statisticsInfo.totalPrice}}</span> 元
+                                <span>{{statisticsInfo.totalCount}}</span> {{$t("neo.linkageSelectbox.piece")}},
+                                <span>{{statisticsInfo.totalPrice}}</span> {{$t("neo.linkageSelectbox.priceUnit")}}
                             </p>
                         </div>
                     </div>

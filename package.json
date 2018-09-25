@@ -1,15 +1,17 @@
 {
   "name": "neo-components",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "neo项目公共样式库",
   "author": "guanlong.xu <guanlong.xu@xinguang.com>",
   "main": "lib/index.js",
   "scripts": {
     "dist": "webpack --config build/webpack.conf.js && webpack --config build/webpack.component.js",
     "theme": "node build/gen-cssfile && gulp build --gulpfile src/theme/dark-forest/gulpfile.js && cp-cli src/theme/dark-forest/lib lib/dark-forest",
-    "build": "npm run dist & npm run theme"
+    "locale": "cp-cli src/locale lib/locale",
+    "build": "npm run dist & npm run theme & npm run locale"
   },
   "dependencies": {
+    "deepmerge": "^2.1.1",
     "normalize-wheel": "^1.0.1",
     "resize-observer-polyfill": "^1.5.0",
     "vue": "^2.5.17",
